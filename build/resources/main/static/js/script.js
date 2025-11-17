@@ -1,0 +1,1 @@
+console.log("Profile Management JS loaded");

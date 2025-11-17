@@ -1,0 +1,12 @@
+D:\profile-management\src\main\java\com\example\profile\model\Profile.java
+D:\profile-management\src\main\java\com\example\profile\ProfileManagementApplication.java
+D:\profile-management\src\main\java\com\example\profile\service\UserService.java
+D:\profile-management\src\main\java\com\example\profile\repository\ProfileRepository.java
+D:\profile-management\src\main\java\com\example\profile\dto\ProfileDto.java
+D:\profile-management\src\main\java\com\example\profile\controller\ProfileController.java
+D:\profile-management\src\main\java\com\example\profile\repository\UserRepository.java
+D:\profile-management\src\main\java\com\example\profile\dto\UserDto.java
+D:\profile-management\src\main\java\com\example\profile\model\User.java
+D:\profile-management\src\main\java\com\example\profile\service\ProfileService.java
+D:\profile-management\src\main\java\com\example\profile\config\SecurityConfig.java
+D:\profile-management\src\main\java\com\example\profile\controller\AuthController.java
