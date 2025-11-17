@@ -85,7 +85,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.profile-management [test]">
+  <component name="RunManager" selected="Spring Boot.ProfileManagementApplication">
     <configuration name="profile-management [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
