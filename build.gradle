@@ -7,7 +7,12 @@ plugins {
 group = 'com.example'
 version = '1.0.0'
 description = 'Spring Boot Profile Management Web App'
-sourceCompatibility = '17'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 
 repositories {
     mavenCentral()
