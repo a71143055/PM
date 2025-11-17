@@ -7,6 +7,7 @@ plugins {
 group = 'com.example'
 version = '1.0.0'
 description = 'Spring Boot Profile Management Web App'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -22,7 +23,7 @@ dependencies {
     // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    // MySQL Connector
+    // MySQL Connector (서버 8.0과 호환, 최신 안정 버전)
     runtimeOnly 'mysql:mysql-connector-j:9.1.0'
 
     // Spring Security
@@ -32,7 +33,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    // Test
+    // Test (JUnit 5 포함)
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
