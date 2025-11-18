@@ -1175,22 +1175,26 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="330" parent="303" name="PRIMARY">
+    <column id="330" parent="303" name="created_by">
+      <Position>7</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="331" parent="303" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="331" parent="303" name="username">
+    <index id="332" parent="303" name="username">
       <ColNames>username</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="332" parent="303" name="PRIMARY">
+    <key id="333" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="333" parent="303" name="username">
+    <key id="334" parent="303" name="username">
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
   </database-model>
