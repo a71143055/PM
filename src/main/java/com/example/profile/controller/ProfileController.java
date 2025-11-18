@@ -10,17 +10,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/profiles")
 public class ProfileController {
     private final ProfileService profileService;
-    public ProfileController(ProfileService profileService) { this.profileService = profileService; }
+
+    public ProfileController(ProfileService profileService) {
+        this.profileService = profileService;
+    }
 
     @GetMapping
-    public String list(Model model) {
+    public String listProfiles(Model model) {
         model.addAttribute("profiles", profileService.findAll());
-        return "profile";
+        return "profile"; // profile.html
     }
 
     @PostMapping
-    public String create(Profile profile) {
+    public String createProfile(@RequestParam String fullName,
+                                @RequestParam String bio) {
+        Profile profile = new Profile();
+        profile.setFullName(fullName);
+        profile.setBio(bio);
         profileService.save(profile);
         return "redirect:/profiles";
     }
 }
+
