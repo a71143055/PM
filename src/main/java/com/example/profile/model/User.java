@@ -1,21 +1,26 @@
 package com.example.profile.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "users")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
     private String username;
-    private String password;
     private String email;
-    private LocalDateTime createdAt = LocalDateTime.now();
+
+    // 로그인 인증을 위한 필수 필드
+    private String password;
+
+    @Column(name = "created_at")
+    private String createdAt;
+
+    @Column(name = "created_by")
+    private String createdBy;
 }
