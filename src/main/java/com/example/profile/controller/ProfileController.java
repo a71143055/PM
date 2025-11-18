@@ -17,7 +17,7 @@ public class ProfileController {
 
     @GetMapping
     public String listProfiles(Model model) {
-        model.addAttribute("profiles", profileService.findAll());
+        model.addAttribute("profile", profileService.findAll());
         return "profile"; // profile.html
     }
 
@@ -28,7 +28,7 @@ public class ProfileController {
         profile.setFullName(fullName);
         profile.setBio(bio);
         profileService.save(profile);
-        return "redirect:/profiles";
+        return "redirect:/profile";
     }
 }
 
