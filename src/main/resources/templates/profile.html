@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <title>Profiles</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -15,8 +15,12 @@
 
 <h3>Create Profile</h3>
 <form th:action="@{/profiles}" method="post">
-    <input type="text" name="fullName" placeholder="Full Name"/>
-    <input type="text" name="bio" placeholder="Bio"/>
+    <label>
+        <input type="text" name="fullName" placeholder="Full Name"/>
+    </label>
+    <label>
+        <input type="text" name="bio" placeholder="Bio"/>
+    </label>
     <button type="submit">Save</button>
 </form>
 </body>
