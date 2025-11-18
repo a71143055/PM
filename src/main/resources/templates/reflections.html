@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <title>Your Reflections</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h2>Your Reflections</h2>
+
+<div>
+    <a th:href="@{/reflections/export.csv}">Export CSV</a> |
+    <a th:href="@{/reflections/export.html}">Export HTML</a> |
+    <a th:href="@{/logout}">Logout</a>
+</div>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Mood</th>
+        <th>Reflection</th>
+        <th>Goals</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${reflections}">
+        <td th:text="${r.date}"></td>
+        <td th:text="${r.mood}"></td>
+        <td th:text="${r.reflection}"></td>
+        <td th:text="${r.goals}"></td>
+        <td>
+            <form th:action="@{'/reflections/delete/' + ${r.id}}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Add Reflection</h3>
+<form th:action="@{/reflections}" th:object="${newReflection}" method="post">
+    <label>
+        <input type="date" th:field="*{date}" />
+    </label>
+    <label>
+        <input type="text" th:field="*{mood}" placeholder="Mood" />
+    </label>
+    <label>
+        <textarea th:field="*{reflection}" placeholder="What did you reflect today?" rows="4"></textarea>
+    </label>
+    <label>
+        <textarea th:field="*{goals}" placeholder="Goals" rows="3"></textarea>
+    </label>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

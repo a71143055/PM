@@ -2,9 +2,7 @@ package com.example.profile.service;
 
 import com.example.profile.model.User;
 import com.example.profile.repository.UserRepository;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
-                .password(user.getPassword()) // 암호화된 비밀번호 그대로 반환
+                .password(user.getPassword())  // BCrypt 해시 그대로
                 .roles("USER")
                 .build();
     }
