@@ -19,7 +19,7 @@ public class UserServiceTest {
         user.setUsername("tester");
         user.setEmail("tester@example.com");
         user.setPassword("password");
-        User saved = userService.save(user);
+        User saved = userService.register(user);
         assertThat(saved.getId()).isNotNull();
     }
 }

@@ -5,8 +5,6 @@ import com.example.profile.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -17,12 +15,8 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public User register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // 암호화
         return userRepository.save(user);
-    }
-
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
     }
 }
