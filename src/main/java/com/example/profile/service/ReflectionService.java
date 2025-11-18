@@ -15,8 +15,8 @@ public class ReflectionService {
         this.reflectionRepository = reflectionRepository;
     }
 
-    public Reflection save(Reflection reflection) {
-        return reflectionRepository.save(reflection);
+    public void save(Reflection reflection) {
+        reflectionRepository.save(reflection);
     }
 
     public void delete(Long id) {

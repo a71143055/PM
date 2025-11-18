@@ -55,13 +55,11 @@ public class ReflectionController {
     public String exportCsv(Principal principal) {
         User user = userService.findByUsername(principal.getName()).orElseThrow();
         StringBuilder sb = new StringBuilder("date,mood,reflection,goals\n");
-        reflectionService.findByUser(user).forEach(r -> {
-            sb.append(escape(r.getDate()))
-                    .append(",").append(escape(r.getMood()))
-                    .append(",").append(escape(r.getReflection()))
-                    .append(",").append(escape(r.getGoals()))
-                    .append("\n");
-        });
+        reflectionService.findByUser(user).forEach(r -> sb.append(escape(r.getDate()))
+                .append(",").append(escape(r.getMood()))
+                .append(",").append(escape(r.getReflection()))
+                .append(",").append(escape(r.getGoals()))
+                .append("\n"));
         return sb.toString();
     }
 

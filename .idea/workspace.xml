@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ff3ae45-1b4a-4c69-855e-f820f6717c44" name="변경" comment="PM">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/controller/ReflectionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/repository/ReflectionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/service/ReflectionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/reflections.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/service/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/controller/ReflectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/controller/ReflectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/profile/service/ReflectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/profile/service/ReflectionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +190,7 @@
       <workItem from="1763451761527" duration="4287000" />
       <workItem from="1763457450584" duration="12000" />
       <workItem from="1763465623969" duration="767000" />
-      <workItem from="1763466403458" duration="1513000" />
+      <workItem from="1763466403458" duration="1890000" />
     </task>
     <task id="LOCAL-00001" summary="PM">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763467605194</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="PM">
+      <option name="closed" value="true" />
+      <created>1763468112841</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1763468112841</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
