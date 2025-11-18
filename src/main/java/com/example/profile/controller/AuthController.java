@@ -3,23 +3,32 @@ package com.example.profile.controller;
 import com.example.profile.model.User;
 import com.example.profile.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
     private final UserService userService;
-    public AuthController(UserService userService) { this.userService = userService; }
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/register")
-    public String registerForm() { return "register"; }
+    public String showRegisterForm(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
+    }
 
     @PostMapping("/register")
-    public String register(User user) {
+    public String processRegister(@ModelAttribute User user) {
         userService.register(user);
         return "redirect:/auth/login";
     }
 
     @GetMapping("/login")
-    public String loginForm() { return "login"; }
+    public String showLoginForm() {
+        return "login";
+    }
 }
