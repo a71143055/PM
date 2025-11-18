@@ -4,51 +4,88 @@
     <title>My Reflections</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <style>
-        body { font-family: 'Helvetica Neue', sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-        h2 { color: #333; }
-        .card-container { display: flex; flex-wrap: wrap; gap: 20px; }
-        .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 16px; width: 300px; }
-        .card h3 { margin: 0 0 8px; font-size: 18px; }
-        .card p { margin: 4px 0; color: #555; }
-        .actions { margin-top: 12px; text-align: right; }
-        .actions button { background: #e74c3c; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
-        .actions button:hover { background: #c0392b; }
-        .add-btn { background: #2ecc71; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
-        .add-btn:hover { background: #27ae60; }
+        :root {
+            --bg: #0b1220; --card: #121a2b; --text: #e5e7eb; --muted:#94a3b8;
+            --primary:#8b5cf6; --danger:#ef4444; --success:#22c55e; --border:#1f2937;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin:0; }
+        header { display:flex; justify-content:space-between; align-items:center; padding:20px 24px; border-bottom:1px solid var(--border); }
+        header h1 { font-size:20px; margin:0; }
+        header .links a { color:#93c5fd; margin-left:12px; text-decoration:none; }
+        main { padding:24px; max-width:1000px; margin:0 auto; }
+        .prompts { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:20px; }
+        .prompts h3 { margin:0 0 8px; font-size:16px; color: var(--muted); }
+        .card-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:16px; }
+        .card { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow: 0 3px 16px rgba(0,0,0,0.25); }
+        .date { font-size:14px; color: var(--muted); margin-bottom:8px; }
+        .mood { display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; margin-bottom:8px; border: 1px solid var(--border); }
+
+        .actions { display:flex; justify-content:flex-end; gap:8px; margin-top:12px; }
+        .btn { border:none; border-radius:8px; padding:8px 12px; cursor:pointer; }
+        .btn-danger { background: var(--danger); color:#fff; }
+
+        .add-form { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin-top:24px; }
+        .add-form input, .add-form textarea { width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid var(--border); background:#0f172a; color: var(--text); }
+        .add-form button { background: var(--success); color:#0b1220; }
     </style>
 </head>
 <body>
-<h2>✨ My Reflections</h2>
-
-<div class="card-container">
-    <div class="card" th:each="r : ${reflections}">
-        <h3 th:text="${r.date}"></h3>
-        <p><strong>Mood:</strong> <span th:text="${r.mood}"></span></p>
-        <p><strong>Reflection:</strong> <span th:text="${r.reflection}"></span></p>
-        <p><strong>Goals:</strong> <span th:text="${r.goals}"></span></p>
-        <div class="actions">
-            <form th:action="@{'/reflections/delete/' + ${r.id}}" method="post">
-                <button type="submit">Delete</button>
-            </form>
-        </div>
+<header>
+    <h1>✨ Reflections</h1>
+    <div class="links">
+        <a th:href="@{/reflections/export.csv}">Export CSV</a>
+        <a th:href="@{/reflections/export.html}">Export HTML</a>
+        <a th:href="@{/logout}">Logout</a>
     </div>
-</div>
+</header>
 
-<h3>Add Reflection</h3>
-<form th:action="@{/reflections}" th:object="${newReflection}" method="post">
-    <label>
-        <input type="date" th:field="*{date}" />
-    </label>
-    <label>
-        <input type="text" th:field="*{mood}" placeholder="Mood" />
-    </label>
-    <label>
-        <textarea th:field="*{reflection}" placeholder="What did you reflect today?" rows="4"></textarea>
-    </label>
-    <label>
-        <textarea th:field="*{goals}" placeholder="Goals" rows="3"></textarea>
-    </label>
-    <button class="add-btn" type="submit">Save Reflection</button>
-</form>
+<main>
+    <section class="prompts">
+        <h3>오늘의 성찰 질문</h3>
+        <ul>
+            <li th:text="${todayPrompt1}"></li>
+            <li th:text="${todayPrompt2}"></li>
+        </ul>
+    </section>
+
+    <section class="card-grid">
+        <article class="card" th:each="r : ${reflections}">
+            <div class="date" th:text="${r.date}"></div>
+            <div class="mood" th:classappend="${#strings.toLowerCase(r.mood)}" th:text="${r.mood}"></div>
+            <div>
+                <strong>Reflection</strong>
+                <p th:text="${r.reflection}"></p>
+            </div>
+            <div>
+                <strong>Goals</strong>
+                <p th:text="${r.goals}"></p>
+            </div>
+            <div class="actions">
+                <form th:action="@{'/reflections/delete/' + ${r.id}}" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </article>
+    </section>
+
+    <section class="add-form">
+        <h3>Add reflection</h3>
+        <form th:action="@{/reflections}" th:object="${newReflection}" method="post">
+            <label>
+                <input type="date" th:field="*{date}" />
+            </label>
+            <label>
+                <input type="text" th:field="*{mood}" placeholder="Mood (e.g., Happy, Calm, Sad)" />
+            </label>
+            <label>
+                <textarea th:field="*{reflection}" placeholder="What did you reflect today?" rows="4"></textarea>
+            </label>
+            <label>
+                <textarea th:field="*{goals}" placeholder="What will you aim for next?" rows="3"></textarea>
+            </label>
+            <button class="btn" type="submit">Save</button>
+        </form>
+    </section>
+</main>
 </body>
 </html>
